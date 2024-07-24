@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar mensaje a Jesuso</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #ffe5ec; /* Rosa claro */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://i.imgur.com/5yVDfns.jpeg'); /* Imagen de fondo */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .container {
+            position: relative;
+            z-index: 1; /* Para estar sobre la imagen de fondo */
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px; /* Altura fija */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            resize: none; /* Evita que se pueda redimensionar */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: #ff9f9f; /* Rosa claro */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff6b6b; /* Rosa más intenso */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff6b6b; /* Rosa intenso */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar mensaje a Jesuso</h1>
+        <textarea id="mensaje" placeholder="Escribe tu peticion hacia Jesuso..."></textarea><br>
+        <button onclick="enviarMensaje('https://discord.com/api/webhooks/WEBHOOK_ID_1')">Enviar a Gatito 1</button>
+        <button onclick="enviarMensaje('https://discord.com/api/webhooks/WEBHOOK_ID_2')">Enviar a Gatito 2</button>
+    </div>
+
+    <script>
+        function enviarMensaje(webhookURL) {
+            var mensaje = document.getElementById('mensaje').value;
+            if (mensaje.trim() === '') {
+                alert('Por favor, introduce un mensaje.');
+                return;
+            }
+
+            var requestData = {
+                content: mensaje
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al enviar el mensaje a Jesuso');
+                }
+                alert('Mensaje enviado correctamente, Jesuso te respondera pronto con tu peticion.');
+                document.getElementById('mensaje').value = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el mensaje a Jesuso, Intenta de nuevo');
+            });
+        }
+    </script>
+</body>
+</html>
