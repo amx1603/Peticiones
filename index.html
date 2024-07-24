@@ -71,15 +71,15 @@
     <div class="container">
         <h1>Enviar mensaje a Jesuso</h1>
         <textarea id="mensaje" placeholder="Escribe tu peticion hacia Jesuso..."></textarea><br>
-        <button onclick="enviarMensaje('https://discord.com/api/webhooks/WEBHOOK_ID_1')">Enviar a Gatito 1</button>
-        <button onclick="enviarMensaje('https://discord.com/api/webhooks/WEBHOOK_ID_2')">Enviar a Gatito 2</button>
+        <button onclick="enviarMensaje('https://discord.com/api/webhooks/1265524719294353491/SX8q3BTyHLEmxgj2PAJHZYroXeo7EmSL3v_t31lR3bA0eIiQ4CfeLwYYPZ6NPEjqRr9t')">Enviar como Fany</button>
+        <button onclick="enviarMensaje('https://discord.com/api/webhooks/1265524664281600010/vK8U4QlDuCsp72v5gosfPGUwn9khmKClgMBAW-j-RqGwz1_SKeDgskSeAPW6uMVqnHQS')">Enviar como Denisse</button>
     </div>
 
     <script>
         function enviarMensaje(webhookURL) {
             var mensaje = document.getElementById('mensaje').value;
             if (mensaje.trim() === '') {
-                alert('Por favor, introduce un mensaje.');
+                alert('Por favor, introduce tu peticion a Jesuso.');
                 return;
             }
 
